@@ -44,7 +44,7 @@ ou na documentação das api na página swagger do backend em
 ```
 http://spotnow.westeurope.cloudapp.azure.com:8000/api/docs/, 
 ```
-Para testar a camada de endereçamento dos smartlocks será necessário instalar a aplicação python <spotnow.raspi> num Raspberry Pi 3 Model B+, com um módulo de saídas digitais, instalar o raspbian, docker, docker-compose, python3, e kubemq, e lançar a instância da aplicação "subscriber.py". 
+Para testar a camada de endereçamento dos smartlocks será necessário instalar a aplicação python <spotnow.raspi> num Raspberry Pi 3 Model B+, com um módulo de saídas digitais, instalar o raspbian, docker, docker-compose, python3, e kubemq, e lançar a instância da aplicação "subscriber.py" com o docker-compose.
 
 <img src="https://github.com/fmoraispires/spotnow/blob/master/raspigpio.jpg" width="200px">
 
