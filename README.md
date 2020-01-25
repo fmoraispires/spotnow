@@ -12,7 +12,7 @@ Apesar de todos os esforços, devido a imensidão do problema, a sua resolução
 O {SpotNow} surge como uma forma de responder a esta fragilidade que há nas cidades: falta de estacionamento.
 O {SpotNow} é uma plataforma online para as pessoas anunciarem garagens, e reservarem lugares de estacionamento.
 A economia partilhada, que está dar dividendos a muitas Empresas da chamada nova economia, tem uma previsão de crescimento assinalável na ordem dos 80.000 milhões em 2025, podendo o {SpotNow} ser uma das soluções neste mercado, que oferece lugares de estacionamento a um mercado de procura em crescendo. 
-Uma condutor que procura um lugar para estacionar através da app do {SpotNow}, pode em tempo real consultar lugares de estacionamento fazendo a reserva, ser-lhe indicado o caminho até ao mesmo, e aceder em tempo real de forma automática a uma garagem privada.
+Uma condutor que procura um lugar para estacionar através da app do {SpotNow}, pode em tempo real consultar lugares de estacionamento fazendo a reserva, seguir as indicações do caminho até ao mesmo, e aceder em tempo real e de forma automática a uma garagem privada.
 Um proprietário de uma garagem privada, poderá através da plataforma reutilizar a sua garagem nas horas em que não está a ser usada, em especial no horário normal de trabalho, correspondente a cerca de 10 horas em que a garagem está vazia.
 
 <img src="https://github.com/fmoraispires/spotnow/blob/master/homepage.png" width="800px">
@@ -63,6 +63,17 @@ O projecto apresenta a seguinte estrutura de ficheiros:
 |  11   |             Python              |        3.7.3        |                         -                          |    
 
 
+
+## Setup
+
+* 1. Descarregue o projecto spotnow do github, e descomprima o ficheiro com a base de dados em spotnow/bkup/sp3/spotnow.bknd/spotnow.dbs/dbspot/data.zip.
+* 2. Instale o docker, docker-compose, python3.
+* 3. Dentro de cada uma das pastas corra o comando seguinte comando para larçar os containers de cada um dos serviços:
+```
+docker-compose up -d --build
+```
+* 3. Compile a aplicação e navegue nos menus abrindo o browser em http://localhost:5000.
+<img src="https://github.com/fmoraispires/ESS-Trading-Platform/blob/master/esstp/Views/market.png" width="600px">
 
 <!-- Markdown -->
 [version]: https://img.shields.io/badge/version-3.0-brightgreen.svg
