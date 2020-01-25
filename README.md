@@ -5,6 +5,7 @@ SpotNow - rent a garage now
 * Projecto de Engenharia Informática
 * SpotNow Trading Platform WebApp
 
+
 ## Âmbito
 Há um grande problema nas cidades no que toca ao estacionamento. Não se trata de opiniões, tratam-se de factos. Factos esses que podemos ver em diversas notícias, não só em Portugal mas como no mundo inteiro. A procura é elevada, mas a oferta não consegue satisfazer o consumidor, havendo casos em que as pessoas chegam a pagar mesmo estacionando em cima da berma da estrada.
 Apesar de todos os esforços, devido a imensidão do problema, a sua resolução ainda se encontra em aberto, sendo que assim esta temática apresenta um potencial elevado para exploração no contexto onde as necessidades dos consumidores sejam cumpridas.
@@ -16,6 +17,7 @@ Uma condutor que procura um lugar para estacionar através da app do {SpotNow}, 
 Um proprietário de uma garagem privada, poderá através da plataforma reutilizar a sua garagem nas horas em que não está a ser usada, em especial no horário normal de trabalho, correspondente a cerca de 10 horas em que a garagem está vazia.
 
 <img src="https://github.com/fmoraispires/spotnow/blob/master/homepage.png" width="800px">
+
 
 ## Arquitectura
 Ao realizar um desenvolvimento ágil, a entrega de aplicativos usando um desenvolvimento monolítico, geralmente com tecnologia menos produtiva e difícil de escalar, torna-se uma tarefa quase impossível. 
@@ -29,21 +31,6 @@ Da mesma forma, os assinantes manifestam interesse em um ou mais eventos e receb
 É este padrão que nos vai permitir endereçar a partir do serviço de backend os vários dispositivos smartlocks, em tempo real, para realizar as operações de acesso às garagens.
 
 <img src="https://github.com/fmoraispires/spotnow/blob/master/deploymentspotnow.png" width="800px">
-
-
-## Organização do software
-
-O projecto apresenta a seguinte estrutura de ficheiros:
-
-* {spotnow.frtnd} - Contém os ficheiros com informação estática, como ficheiros HTML, Javascript e CSS.
-
-* {spotnow.bknd} - Contém a lógica de domínio e acesso à base de dados. 
-
-* {spotnow.kubemq} - Contém a imagem docker do broker.
-
-* {spotnow.pubs} - Contém o código de teste publisher para o broker, que depois foi adicionado ao código de backend.
-
-* {spotnow.raspi} - Contém o código de subscriber do broker, e lógica de controlo das saídas digitais que controlam o comando de abertura do portão de garagem.
 
 
 ## Setup
@@ -71,6 +58,21 @@ docker-compose up -d --build
 
 Navegue nos menus do front-end abrindo o browser em http://<url>:8080/#/, ou na documentação das api na página swagger do backend em http://<url>:8000/api/docs/, substituindo o url pelo fqdn ou ip do servidor de instalação, que préviamente alterou também no código do projecto.
   
+  
+## Organização do software
+
+O projecto apresenta a seguinte estrutura de ficheiros:
+
+* {spotnow.frtnd} - Contém os ficheiros com informação estática, como ficheiros HTML, Javascript e CSS.
+
+* {spotnow.bknd} - Contém a lógica de domínio e acesso à base de dados. 
+
+* {spotnow.kubemq} - Contém a imagem docker do broker.
+
+* {spotnow.pubs} - Contém o código de teste publisher para o broker, que depois foi adicionado ao código de backend.
+
+* {spotnow.raspi} - Contém o código de subscriber do broker, e lógica de controlo das saídas digitais que controlam o comando de abertura do portão de garagem.
+
 
 ## Requisitos de Hardware e Software
 
