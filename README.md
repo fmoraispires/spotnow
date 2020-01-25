@@ -56,7 +56,7 @@ docker-compose up -d --build
 
 <img src="https://github.com/fmoraispires/spotnow/blob/master/dockerps.png" width="800px">
 
-Navegue nos menus do front-end abrindo o browser em http://<url>:8080/#/, ou na documentação das api na página swagger do backend em http://<url>:8000/api/docs/, substituindo o url pelo fqdn ou ip do servidor de instalação, que préviamente alterou também no código do projecto.
+Navegue nos menus do front-end abrindo o browser em http://{ur}>:8080/#/, ou na documentação das api na página swagger do backend em http://{url}:8000/api/docs/, substituindo o url pelo fqdn ou ip do servidor de instalação, que préviamente alterou também no código do projecto.
   
   
 ## Organização do software
