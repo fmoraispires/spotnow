@@ -46,7 +46,7 @@ http://spotnow.westeurope.cloudapp.azure.com:8000/api/docs/,
 ```
 Para testar a camada de endereçamento dos smartlocks será necessário instalar a aplicação python <spotnow.raspi> num Raspberry Pi 3 Model B+, com um módulo de saídas digitais, instalar o raspbian, docker, docker-compose, python3, e kubemq, e lançar a instância da aplicação "subscriber.py". 
 
-<img src="https://github.com/fmoraispires/spotnow/blob/master/raspigpio" width="100px">
+<img src="https://github.com/fmoraispires/spotnow/blob/master/raspigpio.jpg" width="100px">
 
 Em alternativa lançar uma instância num computador, executando a aplicação "subscribernogpio.py" que contém em comentário as instruções que usam a library GPIO de saída digitais do raspi, e executar como:
 ```
