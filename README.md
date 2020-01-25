@@ -4,7 +4,7 @@
 SpotNow - rent a garage now
 * Mestrado Integrado em Engenharia Informática
 * Projecto de Engenharia Informática
-* SpotNow Trading Platform WebApp
+* SpotNow Trading Platform Web Application
 
 
 ## Âmbito
