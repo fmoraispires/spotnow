@@ -1,0 +1,23 @@
+#brew install python
+#python3 -m pip install Django
+# pip3 install django-cors-headers
+# pip3 install django-rest-auth
+# pip3 install django-allauth
+# pip3 install django-rest-swagger
+# pip3 install mysqlclient--- erro
+# ls /usr/local/
+# echo $PATH
+# export PATH=$PATH:/usr/local/mysql/bin
+# pip3 install mysqlclient
+# nano /usr/local/mysql/bin/mysql_config :
+# # on macOS, on or about line 112:
+# # Create options
+# libs="-L$pkglibdir"
+# libs="$libs -l "
+# python3 -m pip install Pillow
+
+Django>=2.0,<2.9
+django-cors-headers
+django-rest-auth
+django-allauth
+django-rest-swagger

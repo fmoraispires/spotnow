@@ -1,0 +1,79 @@
+# spotnow.bknd
+# version 3.3
+# python3  manage.py runserver
+#brew install python
+#python3 -m pip install Django
+# pip3 install django-cors-headers
+# pip3 install django-rest-auth
+# pip3 install django-allauth
+# pip3 install django-rest-swagger
+# pip3 install mysqlclient--- erro
+# ls /usr/local/
+# echo $PATH
+# export PATH=$PATH:/usr/local/mysql/bin
+# pip3 install mysqlclient
+# nano /usr/local/mysql/bin/mysql_config :
+# # on macOS, on or about line 112:
+# # Create options
+# libs="-L$pkglibdir"
+# libs="$libs -l "
+# python3 -m pip install Pillow
+
+# FROM python:3.4-alpine
+# ADD . /spotnow.bknd
+# WORKDIR /spotnow.bknd
+# #RUN pip install -r requirements.txt
+# CMD ["python", "manage.py"]
+
+
+
+# Official Python runtime as a parent image
+FROM python:3.6.1-alpine
+# Set environment variables
+# Python won’t try to write .pyc files which we do not want.
+ENV PYTHONDONTWRITEBYTECODE 1
+# The enviroment variable ensures that the python output is set straight
+# to the terminal with out buffering it first
+ENV PYTHONUNBUFFERED 1
+# create root directory for our project in the container
+RUN mkdir /spotnow.bknd
+# Set the working directory 
+WORKDIR /spotnow.bknd
+# Copy the current directory contents into the container 
+ADD . /spotnow.bknd
+EXPOSE 8000
+
+RUN pip install --upgrade pip
+
+RUN apk update \
+    && apk add --virtual build-deps gcc python3-dev musl-dev \
+    && apk add --no-cache mariadb-dev
+
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+RUN pip3 install mysqlclient  
+
+RUN apk --update add \
+    build-base \
+    jpeg-dev \
+    zlib-dev
+
+RUN pip3 install Pillow 
+
+RUN apk del build-deps
+
+RUN pip install kubemq
+
+#WORKDIR /spotnow.bknd
+
+#RUN python manage.py makemigrations
+
+#RUN python manage.py migrate
+
+#RUN python manage.py createsuperuser
+
+#CMD ["python", "./manage.py", "runserver", "0.0.0.0:8000"]
+
+#CMD ["python", "./manage.py"]
+
+#CMD exec gunicorn manage.wsgi:application — bind 0.0.0.0:8000 — workers 3

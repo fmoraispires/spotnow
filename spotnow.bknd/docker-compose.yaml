@@ -1,0 +1,55 @@
+#spotnow.bknd
+version: '3.3'
+
+services:
+  srvbknd:
+    #depends_on:
+      #- reverseproxy
+    image: srvbknd
+    container_name: srvbknd
+    build:
+      context: ./spotnow.bknd
+      dockerfile: dockerfile
+    #expose:       
+      # Opens port on the container
+    #  - '8000'
+    ports:
+      - "8000:8000"
+    links:
+      - dbspot
+    depends_on:
+      - dbspot
+    restart: always
+    #command: "python3 manage.py runserver 0.0.0.0:8000"
+    command:
+      - /bin/sh
+      - -c
+      - |
+        ./manage.py collectstatic --noinput
+        ./manage.py makemigrations
+        ./manage.py migrate 
+        # #./manage.py createsuperuser
+        ./manage.py runserver 0.0.0.0:8000
+    
+  dbspot:
+    image: mysql:5.7
+    container_name: dbspot
+    command: --lower_case_table_names=1
+    #mysqld default_authentication_plugin=mysql_native_password
+    #command: --lower_case_table_names=1
+    environment:
+       MYSQL_HOST: 'dbspot'
+       MYSQL_ROOT_PASSWORD: 'root1234'
+       MYSQL_DATABASE: 'dbspotnowv8'
+       #MYSQL_USER: 'dbuser'
+       #MYSQL_PASSWORD: 'root1234'
+    #ports:
+      #for debug <Port exposed> : < MySQL Port running inside container>
+      #- '3306:3306'
+      # Where data will be persisted
+    expose:
+      - '3306'
+    volumes:
+      - ./spotnow.dbs/dbspot/data:/var/lib/mysql
+      - ./spotnow.dbs/dbspot/init:/docker-entrypoint-initdb.d
+    restart: always
