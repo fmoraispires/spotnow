@@ -44,17 +44,18 @@ ou na documentação das api na página swagger do backend em
 ```
 http://spotnow.westeurope.cloudapp.azure.com:8000/api/docs/, 
 ```
-Para testar a camada de endereçamento dos smartlocks será necessário instalar a aplicação python <spotnow.raspi> num Raspberry Pi 3 Model B+, instalar o raspbian, docker, docker-compose, python3, e kubemq. Em alternativa lançar uma instância num computador, criando uma cópia da aplicação como "subscribernogpio.py" e comentar as instruções que usam a library GPIO de saída digitais do raspi, e executar como:
+Para testar a camada de endereçamento dos smartlocks será necessário instalar a aplicação python <spotnow.raspi> num Raspberry Pi 3 Model B+, com um módulo de saídas digitais, instalar o raspbian, docker, docker-compose, python3, e kubemq, e lançar a instância da aplicação "subscriber.py". Em alternativa lançar uma instância num computador, executando a aplicação "subscribernogpio.py" que contém em comentário as instruções que usam a library GPIO de saída digitais do raspi, e executar como:
 ```
 python3 ./subscribernogpio.py
 ```
-No backend, executar um POST do endpoint smartlock para testar a comunicação com a instância do "subscriber.py":
+No backend, executar um POST do endpoint smartlock para testar a comunicação com a instância do "subscriber.py"/"subscribernogpio.py":
 ```
 http://spotnow.westeurope.cloudapp.azure.com:8000/api/smartlock-command/
 ```
-Deverá aparecer uma mensagem enviada pela plataforma spotnow:
+Na instância "subscribernogpio.py" deverá aparecer uma mensagem enviada pela plataforma spotnow:
 
 <img src="https://github.com/fmoraispires/spotnow/blob/master/subscriber.png" width="500px">
+
 
 Para instalar o projecto numa VM, descarregue o projecto spotnow do github, e descomprima o ficheiro com a base de dados em: 
 ```
