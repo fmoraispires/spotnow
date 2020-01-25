@@ -1,0 +1,153 @@
+ <template>
+ <div> 
+   <div class="container">
+     <div class="intro-text">
+          <!-- titulo-->
+          <div class="intro-heading text-uppercase">Bem-Vindo</div>
+          <div class="intro-lead-in">Inicie Sessão e usufrua do serviço</div>
+          <b-card class="form">
+            <b-card-text>Introduza os seus dados</b-card-text>
+              <b-form @submit="handleSubmit" @reset="onReset" v-if="show">
+                <b-form-group  id="input-group-1">
+                <label class="label" for="input-1">Nome de Utilizador:</label>
+                <b-form-input
+                  class="input"
+                  id="input-1"
+                  v-model="form.name"
+                  type="text"
+                  required
+                  placeholder="Nome de Utilizador"
+                ></b-form-input>
+              </b-form-group>
+              <b-form-group id="input-group-2" >
+                <label class="label" for="input-1">Senha:</label>
+                <b-form-input
+                  class="input"
+                  id="input-2"
+                  v-model="form.pass"
+                  type="password"
+                  required
+                  placeholder="Senha"
+                ></b-form-input>
+              </b-form-group>
+              <b-form-group id="input-group-3">
+                <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
+                  <b-form-checkbox value="me">Manter-me ligado</b-form-checkbox>
+                </b-form-checkbox-group>
+              </b-form-group>
+
+          <router-link to="/login">
+          <b-button type="submit" variant="primary" icon="fas fa-sign-in-alt" @click="handleSubmit">Iniciar Sessão</b-button>
+          </router-link>
+              <b-button type="reset" variant="danger">Esqueci-me</b-button>
+            </b-form>
+          </b-card>
+      </div>
+    </div>  
+</div>
+</template>
+
+<script>
+  export default {
+    name: "Login",
+    data() {
+      return {
+        form: {
+          name: '',
+          pass: '',
+          checked: []
+        },
+        show: true
+      }
+    },
+    methods: {
+        handleSubmit(e){
+            e.preventDefault()
+            if (this.password.length > 0) {
+                  this.$http.post('http://localhost:3000/login', { //substituir pelo da api
+                      name: this.name,
+                      password: this.pass
+                    })
+                    .then(response => {
+                        let is_admin = response.data.user.is_admin
+                        localStorage.setItem('user',JSON.stringify(response.data.user))
+                        localStorage.setItem('jwt',response.data.token)
+
+                        if (localStorage.getItem('jwt') != null){
+                            this.$emit('loggedIn')
+                            if(this.$route.params.nextUrl != null){
+                                this.$router.push(this.$route.params.nextUrl)
+                            }
+                            else {
+                                if(is_admin== 1){
+                                    this.$router.push('admin')
+                                }
+                                else {
+                                    this.$router.push('dashboard')
+                                }
+                            }
+                        }
+                    })
+                    // .catch(function (error) {
+                    //     //console.error(error.response);
+                    // });
+                }
+            }
+        //alert(JSON.stringify(this.form))
+      },
+      onReset(evt) {
+        evt.preventDefault()
+        // Reset our form values
+        this.form.name = ''
+        this.form.pass = ''
+        this.form.checked = []
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
+      }
+    }
+
+</script>
+
+<style scoped>
+.intro-text{
+    padding-top: 10px;
+    padding-bottom: 100px;
+}
+
+.intro-text .intro-lead-in {
+    
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.intro-text .intro-heading {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.form{
+  height: 300px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 25px;
+}
+
+.label{
+  float: left ;
+  width:30%;
+}
+.input{
+  max-width: 70%;
+}
+
+
+</style>

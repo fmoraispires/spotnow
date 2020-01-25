@@ -1,0 +1,23 @@
+#spotnow.frtnd
+version: '3.3'
+
+services:
+  srvfrtnd:
+    #depends_on:
+      #- reverseproxy
+    image: srvfrtnd
+    container_name: srvfrtnd
+    build:
+      context: .
+      dockerfile: dockerfile
+    #expose:       
+      # Opens port on the container
+    #  - '8080'
+    ports:
+      - "8080:8080"
+    #links:
+    #  - dbspot
+    #depends_on:
+    #  - dbspot
+    restart: always
+    #command: "python3 manage.py runserver 0.0.0.0:8000"
