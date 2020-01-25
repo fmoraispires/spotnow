@@ -65,7 +65,7 @@ Para instalar o projecto numa VM, descarregue o projecto spotnow do github, e de
 ```
 spotnow.bknd/spotnow.dbs/dbspot/data.zip.
 ```
-Instale o docker, docker-compose, python3, e dentro de cada uma das pastas corra o seguinte comando para lançar os containers de cada um dos serviços:
+Instale o docker, docker-compose, python3, e dentro de cada uma das pastas execute o seguinte comando para lançar os containers de cada um dos serviços:
 ```
 docker-compose up -d --build
 ```
