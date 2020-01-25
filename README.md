@@ -15,7 +15,7 @@ A economia partilhada, que está dar dividendos a muitas Empresas da chamada nov
 Uma condutor que procura um lugar para estacionar através da {app} do {SpotNow}, pode em tempo real consultar lugares de estacionamento fazendo a reserva, ser-lhe indicado o caminho até ao mesmo, e aceder em tempo real de forma automática a uma garagem privada.
 Um proprietário de uma garagem privada, poderá através da plataforma reutilizar a sua garagem privada nas horas em que não está a ser usada, em especial no horário normal de trabalho, correspondente a cerca de 10 horas em que a garagem está vazia.
 
-<img src="https://github.com/fmoraispires/spotnow/blob/master/spotnow-homepage.png" width="800px">
+<img src="https://github.com/fmoraispires/spotnow/blob/master/homepage.png" width="800px">
 
 ## Arquitectura
 Ao realizar um desenvolvimento ágil, a entrega de aplicativos usando um desenvolvimento monolítico, geralmente com tecnologia menos produtiva e difícil de escalar, torna-se uma tarefa quase impossível. 
