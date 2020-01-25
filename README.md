@@ -31,9 +31,6 @@ Da mesma forma, os assinantes manifestam interesse em um ou mais eventos e receb
 <img src="https://github.com/fmoraispires/spotnow/blob/master/deploymentspotnow.png" width="800px">
 
 
-## Setup
-
-
 ## Organização do software
 
 O projecto apresenta a seguinte estrutura de ficheiros:
@@ -49,7 +46,7 @@ O projecto apresenta a seguinte estrutura de ficheiros:
 * {spotnow.raspi} - Contém o código de subscriber do broker, e lógica de controlo das saídas digitais que controlam o comando de abertura do portão de garagem.
 
 
-## Requisitos de Software
+## Requisitos de Hardware e Software
 
 |  ID   |            Software             |       Version       |                      Hardware                      |
 |:-----:|:-------------------------------:|:-------------------:|:--------------------------------------------------:|
