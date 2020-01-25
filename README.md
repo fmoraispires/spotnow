@@ -1,5 +1,6 @@
 # Spotnow
-[![version][version]]() 
+[![version][version]]()
+
 SpotNow - rent a garage now
 * Mestrado Integrado em Engenharia Informática
 * Projecto de Engenharia Informática
