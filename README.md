@@ -46,6 +46,31 @@ O projecto apresenta a seguinte estrutura de ficheiros:
 * {spotnow.raspi} - Contém o código de subscriber do broker, e lógica de controlo das saídas digitais que controlam o comando de abertura do portão de garagem.
 
 
+## Setup
+
+O projecto encontra-se instalado na cloud azure, e em desenvolvimento, pelo que os url e ip's do código referem-se a estes servidores. 
+Para testar a camada de endereçamento dos smartlocks será necessário instalar a aplicação python <spotnow.raspi> num Raspberry Pi 3 Model B+, instalar o raspbian, docker, docker-compose, python3, e kubemq. Em alternativa lançar uma instância num computador, e comentar as instruções que usam a library GPIO de saída digitais do raspi.
+Navegue nos menus do front-end abrindo o browser em 
+```
+http://spotnow.westeurope.cloudapp.azure.com:8080/#/ 
+```
+ou na documentação das api na página swagger do backend em
+```
+http://spotnow.westeurope.cloudapp.azure.com:8000/api/docs/, 
+```
+Para instalar o projecto numa VM, descarregue o projecto spotnow do github, e descomprima o ficheiro com a base de dados em: 
+```
+spotnow.bknd/spotnow.dbs/dbspot/data.zip.
+```
+Instale o docker, docker-compose, python3, e dentro de cada uma das pastas corra o seguinte comando para lançar os containers de cada um dos serviços:
+```
+docker-compose up -d --build
+```
+Navegue nos menus do front-end abrindo o browser em http://<url>:8080/#/, ou na documentação das api na página swagger do backend em http://<url>:8000/api/docs/, substituindo .
+
+<img src="https://github.com/fmoraispires/spotnow/blob/master/spotnow-homepage.png" width="800px">
+
+
 ## Requisitos de Hardware e Software
 
 |  ID   |            Software             |       Version       |                      Hardware                      |
@@ -62,18 +87,6 @@ O projecto apresenta a seguinte estrutura de ficheiros:
 |  10   |       Debian GNU/Linux 9        |  4.9.125-linuxkit   |                  (docker images)                   |
 |  11   |             Python              |        3.7.3        |                         -                          |    
 
-
-
-## Setup
-
-* 1. Descarregue o projecto spotnow do github, e descomprima o ficheiro com a base de dados em spotnow/bkup/sp3/spotnow.bknd/spotnow.dbs/dbspot/data.zip.
-* 2. Instale o docker, docker-compose, python3.
-* 3. Dentro de cada uma das pastas corra o comando seguinte comando para larçar os containers de cada um dos serviços:
-```
-docker-compose up -d --build
-```
-* 3. Compile a aplicação e navegue nos menus abrindo o browser em http://localhost:5000.
-<img src="https://github.com/fmoraispires/ESS-Trading-Platform/blob/master/esstp/Views/market.png" width="600px">
 
 <!-- Markdown -->
 [version]: https://img.shields.io/badge/version-3.0-brightgreen.svg
