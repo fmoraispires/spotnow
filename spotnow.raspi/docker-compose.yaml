@@ -15,5 +15,5 @@ services:
     ports:
       - "8880:8880"
     restart: always
-    command: "python3 pubSub_Subscribe_to_a_Channel.py runserver 0.0.0.0:8880"
+    command: "python3 subscriber.py runserver 0.0.0.0:8880"
     
