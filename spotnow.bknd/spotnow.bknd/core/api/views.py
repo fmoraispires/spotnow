@@ -145,8 +145,8 @@ class SmartLockCommandView(APIView):
 	def post(self,request,*args,**kwargs):
 		cmd = request.data.get('cmd',None)
 		publisher  = Sender("51.105.156.152:50000")
-		event = Event(metadata="EventMetaData",body=("hello kubemq - sending single event").encode('UTF-8'),
-					  store=False,channel="testing_event_channel",client_id="hello-world-subscriber")
+		event = Event(metadata="EventMetaData",body=("OPEN").encode('UTF-8'),
+					  store=False,channel="smartlock",client_id="1")
 		try:
 			res = publisher.send_event(event)
 			print(res)
