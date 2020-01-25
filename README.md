@@ -26,7 +26,7 @@ Adicionalmente o padrão {broker} permite obter um melhor desacoplamento entre c
 Da mesma forma, os assinantes manifestam interesse em um ou mais eventos e recebem apenas mensagens de seu interesse, sem o conhecimento de nenhum editor.
 É este padrão que nos vai permitir endereçar a partir do serviço de {backend} os vários dispositivos {smartlocks}, em tempo real, para realizar as operações de acesso às garagens.
 
-<img src="https://github.com/fmoraispires/ESS-Trading-Platform/blob/master/esstp/Views/market.png" width="600px">
+<img src="https://github.com/fmoraispires/spotnow/blob/master/deploymentspotnow.png" width="600px">
 
 
 ## Setup
