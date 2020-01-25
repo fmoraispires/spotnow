@@ -54,7 +54,7 @@ http://spotnow.westeurope.cloudapp.azure.com:8000/api/smartlock-command/
 ```
 Deverá aparecer uma mensagem enviada pela plataforma spotnow:
 
-<img src="https://github.com/fmoraispires/spotnow/blob/master/subscriber.png" width="800px">
+<img src="https://github.com/fmoraispires/spotnow/blob/master/subscriber.png" width="600px">
 
 Para instalar o projecto numa VM, descarregue o projecto spotnow do github, e descomprima o ficheiro com a base de dados em: 
 ```
