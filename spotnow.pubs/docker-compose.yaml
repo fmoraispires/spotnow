@@ -15,5 +15,5 @@ services:
     ports:
       - "8888:8888"
     restart: always
-    command: "python3 pubSub_Publish_to_a_Channel.py runserver 0.0.0.0:8888"
+    command: "python3 publisher.py runserver 0.0.0.0:8888"
     
