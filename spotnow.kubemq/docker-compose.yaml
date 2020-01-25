@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  kubemq:
+    image: kubemq/kubemq
+    container_name: kubemq
+    ports:
+      - "8088:8080"
+      - "9090:9090"
+      - "50000:50000"
+    environment:
+      - KUBEMQ_HOST=kubemq
+      - KUBEMQ_TOKEN=013ec130-0685-4762-80df-e551462214ae
+    networks:
+      - backend
+      #- frontend
+    volumes:
+      - kubemq_vol:/store
+networks:
+  backend:
+volumes:
+  kubemq_vol:
