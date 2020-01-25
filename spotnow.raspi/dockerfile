@@ -39,4 +39,4 @@ RUN apk del build-deps
 
 RUN pip install kubemq
 
-#CMD python ./pubSub_Publish_to_a_Channel.py
+#CMD python ./subscriber.py
