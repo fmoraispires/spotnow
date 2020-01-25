@@ -66,10 +66,11 @@ Instale o docker, docker-compose, python3, e dentro de cada uma das pastas corra
 ```
 docker-compose up -d --build
 ```
-Navegue nos menus do front-end abrindo o browser em http://<url>:8080/#/, ou na documentação das api na página swagger do backend em http://<url>:8000/api/docs/, substituindo .
 
-<img src="https://github.com/fmoraispires/spotnow/blob/master/spotnow-homepage.png" width="800px">
+<img src="https://github.com/fmoraispires/spotnow/blob/master/dockerps.png" width="800px">
 
+Navegue nos menus do front-end abrindo o browser em http://<url>:8080/#/, ou na documentação das api na página swagger do backend em http://<url>:8000/api/docs/, substituindo o url pelo fqdn ou ip do servidor de instalação, que préviamente alterou também no código do projecto.
+  
 
 ## Requisitos de Hardware e Software
 
