@@ -1,0 +1,5 @@
+# dbs
+# version 3.3
+
+# db process will listen on port 3306
+EXPOSE 3306
