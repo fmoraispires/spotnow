@@ -26,7 +26,7 @@ Adicionalmente o padrão {broker} permite obter um melhor desacoplamento entre c
 Da mesma forma, os assinantes manifestam interesse em um ou mais eventos e recebem apenas mensagens de seu interesse, sem o conhecimento de nenhum editor.
 É este padrão que nos vai permitir endereçar a partir do serviço de {backend} os vários dispositivos {smartlocks}, em tempo real, para realizar as operações de acesso às garagens.
 
-<img src="https://github.com/fmoraispires/spotnow/blob/master/deploymentspotnow.png" width="600px">
+<img src="https://github.com/fmoraispires/spotnow/blob/master/deploymentspotnow.png" width="800px">
 
 
 ## Setup
@@ -36,11 +36,11 @@ Da mesma forma, os assinantes manifestam interesse em um ou mais eventos e receb
 
 O projecto apresenta a seguinte estrutura de ficheiros:
 
-* {spotnow.frtnd} - Contém os ficheiros com informação estática, como ficheiros HTML, Javascript (jQuery para Bootstrap), e CSS.
+* {spotnow.frtnd} - Contém os ficheiros com informação estática, como ficheiros HTML, Javascript e CSS.
 
 * {spotnow.bknd} - Contém a lógica de domínio e acesso à base de dados. 
 
-* {spotnow.kubemq} - Contém a imagem do broker.
+* {spotnow.kubemq} - Contém a imagem docker do broker.
 
 * {spotnow.pubs} - Contém o código de teste publisher para o broker, que depois foi adicionado ao código de backend.
 
