@@ -1,0 +1,19 @@
+#spotnow.raspi
+version: '3.3'
+services:
+  srvraspi:
+    #depends_on:
+      #- reverseproxy
+    image: srvraspi
+    container_name: srvraspi
+    build:
+      context: .
+      dockerfile: dockerfile
+    #expose:       
+      # Opens port on the container
+    #  - '8888'
+    ports:
+      - "8880:8880"
+    restart: always
+    command: "python3 pubSub_Subscribe_to_a_Channel.py runserver 0.0.0.0:8880"
+    
