@@ -143,10 +143,13 @@ class SmartLockCommandView(APIView):
 	permissions_classes = (IsAuthenticated,)
 
 	def post(self,request,*args,**kwargs):
-		cmd = request.data.get('cmd',None)
+		msg = request.data.get('msg',None)
+		token = request.data.get('token',None)
+
+
 		publisher  = Sender("51.105.156.152:50000")
-		event = Event(metadata="EventMetaData",body=("OPEN").encode('UTF-8'),
-					  store=False,channel="smartlock",client_id="1")
+		#event = Event(metadata="EventMetaData",body=("OPEN").encode('UTF-8'),store=False,channel="smartlock",client_id="1")
+		event = Event(metadata="EventMetaData",body=msg.encode('UTF-8'),store=False,channel=token,client_id=token)
 		try:
 			res = publisher.send_event(event)
 			print(res)
