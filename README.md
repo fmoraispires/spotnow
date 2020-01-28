@@ -108,4 +108,4 @@ O projecto apresenta a seguinte estrutura de ficheiros:
 
 
 <!-- Markdown -->
-[version]: https://img.shields.io/badge/version-3.0-brightgreen.svg
+[version]: https://img.shields.io/badge/version-4.0-brightgreen.svg
