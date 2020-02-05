@@ -122,6 +122,9 @@ class Garage(models.Model):
     #updateddate = models.DateTimeField(db_column='updatedDate', blank=True, null=True)  # Field name made lowercase.
     #latitude = models.CharField(max_length=45, blank=True, null=True)
     #longitude = models.CharField(max_length=45, blank=True, null=True)
+    state_garage=models.BooleanField(db_column='state_garage', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    latitude = models.CharField(max_length=45, blank=True, null=True)
+    longitude = models.CharField(max_length=45, blank=True, null=True)
     address = models.CharField(max_length=45, blank=True, null=True)
     country = models.CharField(max_length=45, blank=True, null=True)
     city = models.CharField(max_length=45, blank=True, null=True)
