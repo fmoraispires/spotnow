@@ -123,7 +123,7 @@ class OwnerAddSerializer(serializers.ModelSerializer):
 class GarageSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Garage
-		fields = ('id','name','isinactive','createddate','address','country','city','zipcode','owner','imagem')
+		fields = ('id','name','isinactive','state_garage','createddate','latitude','longitude','address','country','city','zipcode','owner','imagem')
 
 
 class SmartlockSerializer(serializers.ModelSerializer):
