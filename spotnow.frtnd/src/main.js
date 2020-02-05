@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
-import Vuex from 'vuex'
 import router from './router'
+import Vuex from 'vuex'
+import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import * as VueGoogleMaps from "vue2-google-maps";
@@ -12,6 +13,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import vuetify from './plugins/vuetify';
 
 Vue.prototype.$http = axios;
+const token = localStorage.getItem('token')
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
@@ -27,19 +32,8 @@ Vue.use(VueGoogleMaps, {
 
 new Vue({
   router,
+  store,
   axios,
   vuetify,
-//   mounted: function(){
-        
-//     axios.get('https://jsonplaceholder.typicode.com/posts')
-//         .then(response => this.posts = response.data)
-//         .catch(error => this.posts = [{title: 'No posts found.'}])
-//         .finally(()=> console.log('Data Loading Completed.'));
-// },
-
-// data: {
-//     posts: null,
-
-// },
   render: h => h(App)
 }).$mount('#app')

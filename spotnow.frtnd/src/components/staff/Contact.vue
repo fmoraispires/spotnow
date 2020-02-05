@@ -1,8 +1,16 @@
 <template>
   <div id="contacts">
     <ul>
-      Useres antigos.
-      <li v-for="post in posts" v-bind:key="post" v-text="post.user_obj.username"></li>
+      Owners:
+      <li v-for="owner in owners" v-bind:key="owner" v-text="owner.user_obj.username"></li>
+    </ul>
+    <ul>
+      Clients:
+      <li v-for="client in clients" v-bind:key="client" v-text="client.user_obj.username"></li>
+    </ul>
+    <ul>
+      Garage:
+      <li v-for="garage in garages" v-bind:key="garage" v-text="garage.name"></li>
     </ul>
   </div>
 </template>
@@ -11,7 +19,9 @@
 export default {
   data() {
     return {
-      posts: null
+      owners: null,
+      clients: null,
+      garages: null,
     };
   },
   /* eslint-disable no-console */
@@ -33,7 +43,20 @@ export default {
 
     this.$http
       .get("http://spotnow.westeurope.cloudapp.azure.com:8000/api/owners/")
-      .then(response => (this.posts = response.data))
+      .then(response => (this.owners = response.data))
+      .finally(() => console.log("ola"));
+
+    
+
+    
+    this.$http
+      .get("http://spotnow.westeurope.cloudapp.azure.com:8000/api/clients/")
+      .then(response => (this.clients = response.data))
+      .finally(() => console.log("ola"));
+
+       this.$http
+      .get("http://spotnow.westeurope.cloudapp.azure.com:8000/api/garages/")
+      .then(response => (this.garages = response.data))
       .finally(() => console.log("ola"));
   }
   /* eslint-enable no-console */

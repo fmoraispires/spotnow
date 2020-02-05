@@ -7,13 +7,13 @@
             <v-img class="brandImage" src="../assets/images/logo.png"></v-img>
           </v-toolbar-title>
         </router-link>
-        <v-menu right  :open-on-hover="true">
+        <v-menu right offset-y  transition="slide-x-transition" :open-on-hover="true">
           <template v-slot:activator="{ on }">
             <v-btn text v-on="on" class="btn">
-              <b color:>Sobre Nós</b>
+              <b>Sobre Nós</b>
             </v-btn>
           </template>
-          <v-list class="inline">
+          <v-list vertical class="inline">
             <router-link to="/about">
             <v-list-item @click="() => {}">
             <v-list-item-title class="tab">
@@ -49,7 +49,7 @@
       <v-toolbar-items class="items" v-if="!mobileView">
         <router-link to="/registo">
           <v-btn  text class="btn">
-            <b>Registo</b>
+            <b>Registo </b>
           </v-btn>
         </router-link>
         <router-link to="/login">
@@ -58,13 +58,13 @@
             <b>Iniciar Sessão</b>
           </v-btn>
         </router-link>
-        <v-btn text @hidden="false" @click.stop="drawer = !drawer" class="btn">
+        <v-btn text @hidden="true" @click.stop="drawer = !drawer" class="btn">
           <v-icon class="icon">fas fa-user-circle</v-icon>
           <b>Área do Cliente</b>
         </v-btn>
       </v-toolbar-items>
       <v-toolbar-items class="items" v-if="mobileView">
-        <v-btn text @hidden="true" @click.stop="drawer = !drawer" class="btn">
+        <v-btn text  @click.stop="drawer = !drawer" class="btn">
           <v-icon class="icon">fas fa-user-circle</v-icon>
           <b>Área do Cliente</b>
         </v-btn>
@@ -185,31 +185,38 @@ export default {
       items: [
         {
           id: 0,
-          title: "Reservar Garagem",
+          title: "Mapa das Garagens",
           icon: "mdi-garage-open",
+          page: "/mapa"
+        },
+        {
+          id: 1,
+          title: "Reservar Garagem",
+          icon: "mdi-bell",
           page: "/reserva"
         },
-        { id: 1, title: "Histórico", icon: "mdi-clipboard-list-outline", page: "/historico" },
+        { id: 2, title: "Histórico", icon: "mdi-clipboard-list-outline", page: "/historico" },
         {
-          id: 2,
+          id: 3,
           title: "Adicionar Garagem",
           icon: "mdi-garage",
           page: "/addgaragem"
         },
+
         {
-          id: 3,
+          id: 4,
           title: "Notificações",
           icon: "mdi-bell",
           page: ""
         },
         {
-          id: 4,
+          id: 5,
           title: "Métodos de Pagamento",
           icon: "mdi-credit-card-outline",
           page: "/payment"
         },
         {
-          id: 4,
+          id: 6,
           title: "Dados da Conta",
           icon: "mdi-account-settings",
           page: "/settings"
@@ -218,13 +225,23 @@ export default {
       icons: ["fab fa-facebook", "fab fa-twitter", "fab fa-google-plus"]
     };
   },
+  computed: {
+   isLoggedIn(){ return this.$store.getters.isLoggedIn}
+    },
+  
   methods: {
+    logout () {
+        this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push('/login')
+        })
+      },
+
     handleView() {
       if (window.innerWidth <= 960) this.mobileView = true;
     }
   },
-
-  created() {
+  created(){
     this.handleView();
   }
 };

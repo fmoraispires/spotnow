@@ -138,7 +138,7 @@ export default {
       //rasp 3 = b61dc354fa18a582717b6f1b;
       this.$http
           .post("http://spotnow.westeurope.cloudapp.azure.com:8000/api/smartlock-command/", 
-            { "token":"3badb453325ec958c339e55e",
+            { "token":"560c6019872b960209c6cc02",
               "msg": "OPEN"})
           .then(response => console.log(response));
 
@@ -148,7 +148,7 @@ export default {
       this.garage = false;
       this.$http
           .post("http://spotnow.westeurope.cloudapp.azure.com:8000/api/smartlock-command/", 
-          { "token":"3badb453325ec958c339e55e",
+          { "token":"560c6019872b960209c6cc02",
             "msg": "CLOSE"})
           .then(response => console.log(response));
 

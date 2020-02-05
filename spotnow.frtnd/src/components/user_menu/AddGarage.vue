@@ -1,186 +1,352 @@
 <template>
   <div>
     <div class="container">
-     <div class="intro-text">
-          <!-- titulo-->
-          <div class="intro-heading text-uppercase">Adicione a sua Garagem</div>
-          <div class="intro-lead-in">Registe a sua garagem</div>
-        <b-card>
-           <b-card-text>Insira os dados da sua garagem</b-card-text>
-        <b-form @submit="saveGarage" @reset="onReset">
-          <b-form-group id="input-group-1">
-            <label class="label" for="input-1">Localização:</label>
-            <b-form-input
+      <div class="intro-text">
+        <!-- titulo-->
+        <div class="intro-heading text-uppercase">Adicione a sua Garagem</div>
+        <div class="intro-lead-in">Registe a sua garagem</div>
+        <v-card flat tile class="card">
+          <form class="form">
+            <div class="card-title">
+              <b>Insira os dados da smartlock da sua garagem</b>
+            </div>
+             <v-text-field
               class="input"
-              id="input-1"
-              v-model="form.morada"
-              type="text"
+              v-model="name"
+              :error-messages="nameErrors"
+              label="Nome"
               required
-              placeholder="Morada"
-            ></b-form-input>
-          </b-form-group>
-          <b-form-group id="input-group-2">
-            <label class="label" for="input-2">Valor:</label>
-            <b-form-input
+              @input="$v.name.$touch()"
+              @blur="$v.name.$touch()"
+              filled
+              rounded
+              dense
+            ></v-text-field>
+            <v-text-field
               class="input"
-              id="input-2"
-              v-model="form.valor"
-              type="text"
+              v-model="address"
+              :error-messages="addressErrors"
+              label="Morada"
               required
-              placeholder="valor"
-            ></b-form-input>
-            </b-form-group>
-            <b-row>
-               <b-form-group id="input-group-3">
-            <label class="label" for="input-3">Horário de Inicio:</label>
-            <b-form-input
+              @input="$v.address.$touch()"
+              @blur="$v.address.$touch()"
+              filled
+              rounded
+              dense
+            ></v-text-field>
+             <v-text-field
               class="input"
-              id="input-3"
-              v-model="form.time1"
-              type="time"
+              v-model="city"
+              :error-messages="cityErrors"
+              label="Cidade"
               required
-              placeholder="inicio"
-            ></b-form-input>
-            </b-form-group>
-             <b-form-group id="input-group-4">
-            <label class="label" for="input-4">Horário de Fim:</label>
-            <b-form-input
+              @input="$v.city.$touch()"
+              @blur="$v.city.$touch()"
+              filled
+              rounded
+              dense
+            ></v-text-field>
+            <v-row>
+             <v-text-field
               class="input"
-              id="input-4"
-              v-model="form.time2"
-              type="time"
+              v-model="lat"
+              :error-messages="latErrors"
+              label="Latitude"
               required
-              placeholder="fim"
-            ></b-form-input>
-            </b-form-group>
-            </b-row>
-           
-            <b-form-file
-              v-model="file"
-              :state="Boolean(file)"
-              placeholder="Choose a file or drop it here..."
-              drop-placeholder="Drop file here..."
-            ></b-form-file>
-            <div class="mt-3">Selected file: {{ file ? file.name : '' }}</div>
+              @input="$v.lat.$touch()"
+              @blur="$v.lat.$touch()"
+              filled
+              rounded
+              dense
+            ></v-text-field>
 
-            <!-- Plain mode -->
-            <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
-            <div class="mt-3">Selected file: {{ file2 ? file2.name : '' }}</div>
-          
+             <v-text-field
+              class="input"
+              v-model="long"
+              :error-messages="longErrors"
+              label="Longitude"
+              required
+              @input="$v.long.$touch()"
+              @blur="$v.long.$touch()"
+              filled
+              rounded
+              dense
+            ></v-text-field>
+            </v-row>
+            <v-text-field
+              class="input"
+              v-model="price"
+              :error-messages="priceErrors"
+              required
+              label="Preço"
+              prepend-icon="mdi-currency-eur"
+              @input="$v.price.$touch()"
+              @blur="$v.price.$touch()"
+              filled
+              rounded
+              dense
+            ></v-text-field>
+            <v-row>
+              <v-text-field
+                v-model="timei"
+                class="input"
+                label="Horário de Inicio"
+                :error-messages="timeiErrors"
+                required
+                prepend-icon="mdi-calendar-clock"
+                @input="$v.timei.$touch()"
+                @blur="$v.timei.$touch()"
+                filled
+                rounded
+                dense
+              ></v-text-field>
+              <v-text-field
+                v-model="timef"
+                class="input"
+                label="Horário de Fim"
+                :error-messages="timefErrors"
+                required
+                prepend-icon="mdi-calendar-clock"
+                @input="$v.timef.$touch()"
+                @blur="$v.timef.$touch()"
+                filled
+                rounded
+                dense
+              ></v-text-field>
+            </v-row>
 
-          <b-row>
-            <b-col sm="2">
-              <label for="Observações">Observações:</label>
-            </b-col>
-            <b-col sm="10">
-              <b-form-textarea id="textarea-small" size="sm" placeholder="outras observações"></b-form-textarea>
-            </b-col>
-          </b-row>
-
-          <b-button type="submit" variant="primary" @click="handleSubmit">Guardar</b-button>
-          <b-button type="reset" variant="danger">Editar</b-button>
-        </b-form>
-        </b-card>
-        </div>
-    </div>  
+            <v-file-input label="Imagens" filled prepend-icon="mdi-camera" rounded dense></v-file-input>
+            <v-textarea
+              v-model="obs"
+              class="input-7-1"
+              label="Observações"
+              required
+              filled
+              rounded
+              dense
+            ></v-textarea>
+            <div class="signup">
+              <v-btn @click="handleSave" :disabled='!isComplete' depressed rounded x-large dark>
+                <b>Guardar Garagem</b>
+                <v-icon class="icon">far fa-save</v-icon>
+              </v-btn>
+            </div>
+             <v-alert
+          :value="alert"
+          type="success"
+          dismissible
+          transition="scale-transition"
+        >Registo com sucesso</v-alert>
+          </form>
+        </v-card>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import { validationMixin } from "vuelidate";
+import { required } from "vuelidate/lib/validators";
+
 export default {
   name: "AddGarage",
+  mixins: [validationMixin],
+  validations: {
+    name:{required},
+    address: { required },
+    city: { required },
+    lat: { required },
+    long: { required },
+    price: { required },
+    timei: { required },
+    timef: { required },
+    description: {}
+  },
+
   data() {
     return {
-      file: null,
-      file2: null,
-      form: {
-        morada: "",
-        valor: ""
-      }
+      alert:false,
+      name:"",
+      address: "",
+      city:"",
+      lat: "",
+      long:"",
+      price: "",
+      timei: "",
+      timef: "",
+      owner: "",
+      description: ""
     };
   },
-  methods: {
-    handleSubmit(e) {
-      e.preventDefault();
-      alert(JSON.stringify(this.form));
 
-      if (
-        this.password === this.password_confirmation &&
-        this.password.length > 0
-      ) {
-        let url = "http://localhost:3000/register"; //substituir pelo url da api
-        //if(this.is_admin != null || this.is_admin == 1) url = "http://localhost:3000/register-admin"
-        this.$http
-          .post(url, {
-            email: this.form.email,
-            name: this.form.name,
-            password: this.form.pass,
-            address: this.form.address,
-            nif: this.form.nif,
-            tlm: this.form.tlm,
-          })
-          .then(response => {
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            localStorage.setItem("jwt", response.data.token);
+  computed: {
+    isComplete () {
+    return this.name && this.address && this.city && this.lat && this.long;
+  },
+    timefErrors() {
+      const errors = [];
+      if (!this.$v.timef.$dirty) return errors;
+      !this.$v.timef.required && errors.push("Campo obrigatório");
+      return errors;
+    },
+    timeiErrors() {
+      const errors = [];
+      if (!this.$v.timei.$dirty) return errors;
+      !this.$v.timei.required && errors.push("Campo obrigatório");
+      return errors;
+    },
 
-            if (localStorage.getItem("jwt") != null) {
-              this.$emit("loggedIn");
-              if (this.$route.params.nextUrl != null) {
-                this.$router.push(this.$route.params.nextUrl);
-              } else {
-                this.$router.push("/");
-              }
-            }
-          });
-        // .catch(error => {
-        //     //console.error(error);
-        // });
-      } else {
-        this.password = "";
-        this.passwordConfirm = "";
-        return alert("Passwords do not match");
-      }
+    addressErrors() {
+      const errors = [];
+      if (!this.$v.address.$dirty) return errors;
+      !this.$v.address.required && errors.push("Campo obrigatório");
+      return errors;
+    },
+    priceErrors() {
+      const errors = [];
+      if (!this.$v.price.$dirty) return errors;
+      !this.$v.price.required && errors.push("Campo obrigatório");
+      return errors;
+    },
+    latErrors() {
+      const errors = [];
+      if (!this.$v.lat.$dirty) return errors;
+      !this.$v.lat.required && errors.push("Campo obrigatório");
+      return errors;
+    },
+    nameErrors() {
+      const errors = [];
+      if (!this.$v.name.$dirty) return errors;
+      !this.$v.name.required && errors.push("Campo obrigatório");
+      return errors;
+    },
+    cityErrors() {
+      const errors = [];
+      if (!this.$v.city.$dirty) return errors;
+      !this.$v.city.required && errors.push("Campo obrigatório");
+      return errors;
+
+    },
+    longErrors() {
+      const errors = [];
+      if (!this.$v.long.$dirty) return errors;
+      !this.$v.long.required && errors.push("Campo obrigatório");
+      return errors;
     }
+  },
+
+  methods: {
+    /* eslint-disable no-console */
+    handleSave(){
+      this.save();
+      this.isSignUP();
+    },
+
+    save() {
+      this.$http
+        .post(
+          "http://spotnow.westeurope.cloudapp.azure.com:8000/api/garage-add/",
+          {
+            "name": this.name,
+            "address": this.address,
+            "city": this.city,
+            "latitude": this.lat,
+            "longitude": this.long,
+            "preco":this.price,
+            "owner": this.owner=3,
+            
+          }
+        )
+        .then(response => console.log(response));
+      // }
+      /* eslint-enable no-console */
+    },
+    isSignUP(){
+      this.alert = true;
+    return this.alert;
+  },
   }
 };
 </script>
 
 
+
 <style scoped>
-.intro-text{
-    padding-top: 10px;
-    padding-bottom: 100px;
+.intro-text {
+  padding-top: 10px;
+  padding-bottom: 100px;
+  margin: auto;
+}
+.intro-lead-in {
+  font-size: 22px;
+  font-style: italic;
+  line-height: 22px;
+  margin: auto;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+}
+.intro-heading {
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 50px;
+  margin: auto;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+}
+.card {
+  height: 1100px;
+  width: 600px;
+  margin: auto;
 }
 
-.intro-text .intro-lead-in {
-    
-    font-size: 22px;
-    font-style: italic;
-    line-height: 22px;
-    margin-bottom: 25px;
-    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
+.card-title {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 22px;
+  margin: auto;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.intro-text .intro-heading {
-    font-size: 50px;
-    font-weight: 700;
-    line-height: 50px;
-    margin-bottom: 25px;
-    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
-}
-
-.form{
+.form {
   height: 100%;
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 25px;
 }
 
-.label{
-  float: left ;
-  width:30%;
-}
-.input{
-  max-width: 70%;
+.form {
+  justify-content: center;
+  margin: auto;
 }
 
+.input {
+  margin: auto;
+  padding-bottom: 25px;
+  max-width: 100%;
+  max-height: 25%;
+}
+
+.input2 {
+  margin: auto;
+  max-width: 100%;
+  max-height: 25%;
+}
+
+.signup {
+  margin: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.icon {
+  margin-left: 5px;
+}
+.ancora {
+  margin-left: 5px;
+}
+.bot2 {
+  margin: auto;
+}
+.bot {
+  align-items: center;
+}
 </style>
